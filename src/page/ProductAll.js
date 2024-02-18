@@ -1,7 +1,23 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import ProductCard from "../component/ProductCard";
 const ProductAll = () => {
-  return <div>ProductAll</div>;
+  const [productList, setProductList] = useState([]);
+  const getProducts = async () => {
+    let url = "http://localhost:5000/products";
+    let response = await fetch(url);
+    let data = await response.json();
+    setProductList(data);
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  return (
+    <div>
+      <ProductCard />
+    </div>
+  );
 };
 
 export default ProductAll;
