@@ -1,13 +1,16 @@
 import React from "react";
+import "../App.css";
 
-const ProductCard = () => {
+const ProductCard = ({ item }) => {
+  console.log("item", item);
+
   return (
-    <div>
-      <img src="https://ersco-official.com/web/product/medium/202312/2890b54f30c8d0a68e727269e078ee90.png" />
-      <div>Conscious choice</div>
-      <div>벨티드 트윌 코드</div>
-      <div>$9999</div>
-      <div>신제품</div>
+    <div className="card">
+      <img src={item?.img} />
+      <div>{item?.choice == true ? "Conscious choice" : " "}</div>
+      <div>{item?.title}</div>
+      <div>{item?.price}</div>
+      <div>{item?.new == true ? "신제품" : " "}</div>
     </div>
   );
 };

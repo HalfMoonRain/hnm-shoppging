@@ -15,6 +15,7 @@ import Navbar from "./component/Navbar";
 // 5. 로그아웃이 되면 상품 디테일 페이지를 볼 수 없다. 다시 로그인 페이지가 보인다
 // 6. 로그인을 하면 로그아웃이 보이고 로그아웃을 하면 로그인이 보인다
 // 7. 상품을 검색 할 수 있다.
+//  "server-start": "json-server --watch db.json --port 5000"
 
 function App() {
   return (

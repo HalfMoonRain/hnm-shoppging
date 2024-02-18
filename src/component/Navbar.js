@@ -24,7 +24,7 @@ const Navbar = () => {
       <div class="nav-section">
         <img
           width={100}
-          src="https://ersco-official.com/SkinImg/logo.png"
+          src="https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg"
         ></img>
       </div>
       <div class="menu-area">
