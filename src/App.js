@@ -1,10 +1,12 @@
 import logo from "./logo.svg";
+import { useState } from "react";
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
 import ProductAll from "./page/ProductAll";
 import ProductDetail from "./page/ProductDetail";
 import Login from "./page/Login";
 import Navbar from "./component/Navbar";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 // 1. 전체상품페이지, 로그인, 상품상세 페이지
 // 1-1 네비게이션바 만들기
 // 2. 전체 상품페이지에서는 전체 상품을 볼 수 있다.
@@ -18,6 +20,8 @@ import Navbar from "./component/Navbar";
 //  "server-start": "json-server --watch db.json --port 5000"
 
 function App() {
+  const [authenticate, setAuthenticate] = useState(false); // 로그인은 true
+
   return (
     <div>
       <Navbar />
