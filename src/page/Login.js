@@ -1,10 +1,14 @@
 import React from "react";
 import { Form, Button, Container } from "react-bootstrap";
-const Login = () => {
+import { useNavigate } from "react-router-dom";
+const Login = ({ setAuthenticate }) => {
+  const navigate = useNavigate();
   const loginUser = (event) => {
     // 로그인 페이지에선 새로고침 막아야됨
     event.preventDefault();
     console.log("login");
+    setAuthenticate(true);
+    navigate("/");
   };
 
   return (

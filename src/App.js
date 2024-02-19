@@ -1,5 +1,5 @@
 import logo from "./logo.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
 import ProductAll from "./page/ProductAll";
@@ -22,12 +22,18 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 function App() {
   const [authenticate, setAuthenticate] = useState(false); // 로그인은 true
 
+  useEffect(() => {
+    console.log("Auth", authenticate);
+  }, [authenticate]);
   return (
     <div>
       <Navbar />
       <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login setAuthenticate={setAuthenticate} />}
+        />
         <Route path="/product/:id" element={<ProductDetail />} />
       </Routes>
     </div>
