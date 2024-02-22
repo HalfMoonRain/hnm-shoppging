@@ -7,6 +7,7 @@ import ProductDetail from "./page/ProductDetail";
 import Login from "./page/Login";
 import Navbar from "./component/Navbar";
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import PrivateRoute from "./route/PrivateRoute";
 // 1. 전체상품페이지, 로그인, 상품상세 페이지
 // 1-1 네비게이션바 만들기
 // 2. 전체 상품페이지에서는 전체 상품을 볼 수 있다.
@@ -34,7 +35,10 @@ function App() {
           path="/login"
           element={<Login setAuthenticate={setAuthenticate} />}
         />
-        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route
+          path="/product/:id"
+          element={<PrivateRoute authenticate={authenticate} />}
+        />
       </Routes>
     </div>
   );
