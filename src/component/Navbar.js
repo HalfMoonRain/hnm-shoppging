@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { Container, Row } from "react-bootstrap";
 const Navbar = ({ authenticate, setAuthenticate }) => {
   const menuList = [
     "New",
@@ -21,6 +22,9 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   const goToLogout = () => {
     console.log(setAuthenticate());
     setAuthenticate(false);
+    navigate("/");
+  };
+  const goToHome = () => {
     navigate("/");
   };
   const search = (event) => {
@@ -51,6 +55,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
         <img
           width={100}
           src="https://upload.wikimedia.org/wikipedia/commons/5/53/H%26M-Logo.svg"
+          onClick={goToHome}
         ></img>
       </div>
       <div class="menu-area">
