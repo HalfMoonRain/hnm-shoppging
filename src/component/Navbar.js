@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-const Navbar = () => {
+const Navbar = ({ authenticate, setAuthenticate }) => {
   const menuList = [
     "New",
     "All",
@@ -15,11 +15,14 @@ const Navbar = () => {
     "OAM",
   ];
   const navigate = useNavigate();
-
   const goToLogin = () => {
     navigate("/login");
   };
-
+  const goToLogout = () => {
+    console.log(setAuthenticate());
+    setAuthenticate(false);
+    navigate("/");
+  };
   const search = (event) => {
     if (event.key === "Enter") {
       // 입력한 검색어 읽어오기
@@ -32,10 +35,17 @@ const Navbar = () => {
   return (
     <div>
       <div>
-        <div class="login-button" onClick={goToLogin}>
-          <FontAwesomeIcon icon={faUser} />
-          <div>로그인</div>
-        </div>
+        {authenticate === false ? (
+          <div class="login-button" onClick={goToLogin}>
+            <FontAwesomeIcon icon={faUser} />
+            <div>로그인</div>
+          </div>
+        ) : (
+          <div class="login-button" onClick={goToLogout}>
+            <FontAwesomeIcon icon={faUser} />
+            <div>로그아웃</div>
+          </div>
+        )}
       </div>
       <div class="nav-section">
         <img
