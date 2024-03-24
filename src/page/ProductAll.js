@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import ProductCard from "../component/ProductCard";
 import { Container, Row, Col } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
+import { productAction } from "../redux/actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
+
 const ProductAll = () => {
-  const [productList, setProductList] = useState([]);
+  const productList = useSelector((state) => state.productList);
   const [query, setQuery] = useSearchParams();
-  const getProducts = async () => {
+  const dispatch = useDispatch();
+
+  const getProducts = () => {
     let searchQuery = query.get("q") || "";
-    console.log("query", searchQuery);
-    let url = `https://my-json-server.typicode.com/HalfMoonRain/hnm-shoppging/products?q=${searchQuery}`;
-    let response = await fetch(url);
-    let data = await response.json();
-    setProductList(data);
-    console.log(productList);
+    dispatch(productAction.getProducts(searchQuery));
   };
 
   useEffect(() => {
